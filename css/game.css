@@ -30,6 +30,8 @@ header{
 /* ===== CONTROLES (nível, reiniciar, sair) ===== */
 .controls{
     display: flex;
+    flex-wrap: wrap;            /* no celular os botões podem quebrar de linha */
+    justify-content: center;
     gap: 15px;
     margin-bottom: 20px;
 }
@@ -63,14 +65,26 @@ header{
 }
 
 /* ===== TABULEIRO ===== */
-/* O número de colunas é definido pelo JavaScript (depende do nível) */
+/* As colunas dependem do nível (o JavaScript coloca a classe
+   "facil", "medio" ou "dificil" no tabuleiro) */
 .grid{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+}
+
+.grid.facil{
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid.medio{
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid.dificil{
+    grid-template-columns: repeat(5, 1fr);
 }
 
 /* ===== CARTAS ===== */
@@ -82,6 +96,7 @@ header{
     transition: all 400ms ease;
     transform-style: preserve-3d;
     cursor: pointer;
+    touch-action: manipulation;   /* evita o zoom por toque duplo no celular */
 }
 
 .face{
@@ -93,7 +108,8 @@ header{
     border: 2px solid #39813a;
     border-radius: 5px;
     transition: all 400ms ease;
-    backface-visibility: hidden;   /* esconde o "verso" de cada lado */
+    -webkit-backface-visibility: hidden;   /* versão para iPhone/Safari */
+    backface-visibility: hidden;           /* esconde o "verso" de cada lado */
 }
 
 .front{
@@ -101,7 +117,7 @@ header{
 }
 
 .back{
-    background-image: url('../imagens/capa.jfif');
+    background-image: url('../imagens/capa.jpg');
 }
 
 /* Carta virada */
@@ -150,6 +166,8 @@ header{
     padding: 25px;
     width: 100%;
     max-width: 450px;
+    max-height: 90vh;       /* nunca passa da altura da tela */
+    overflow-y: auto;       /* se for grande, ganha barra de rolagem */
     text-align: center;
     line-height: 1.8;
     font-size: 0.7em;
@@ -166,4 +184,57 @@ header{
 
 .ranking-list{
     margin-bottom: 20px;
+}
+
+/* =====================================================
+   VERSÃO PARA CELULAR
+   Estas regras só valem se a tela tiver NO MÁXIMO 600px
+   de largura. Ficam por último de propósito, para
+   "vencer" as regras de cima.
+   ===================================================== */
+@media (max-width: 600px){
+
+    /* menos espaço nas bordas, sobra mais tela para as cartas */
+    main{
+        padding: 10px 10px 30px;
+    }
+
+    /* painel com letra menor */
+    header{
+        font-size: 0.6em;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .status{
+        font-size: 0.6em;
+        margin-bottom: 12px;
+    }
+
+    .controls{
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+
+    /* cartas mais juntas */
+    .grid{
+        gap: 8px;
+    }
+
+    /* menos colunas = cartas maiores e fáceis de tocar */
+    .grid.facil{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid.medio{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .grid.dificil{
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .modal-box{
+        padding: 15px;
+    }
 }

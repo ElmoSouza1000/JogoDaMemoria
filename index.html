@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+    <!-- Ícone da aba do navegador -->
+    <link rel="icon" href="./imagens/chapeuDePalha.jpg">
+
+    <!-- Caminhos começam com "./" (relativos) para funcionar no GitHub Pages -->
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/login.css">
 
@@ -23,9 +27,10 @@
             <h1>Memory Game</h1>
         </div>
 
-        <input type="text" placeholder="Nome" class="login-input">
+        <!-- maxlength: limita o nome a 15 letras para caber no painel do jogo, mesmo no celular -->
+        <input type="text" placeholder="Nome" class="login-input" maxlength="15">
 
-        <!-- NOVO: o jogador escolhe a dificuldade -->
+        <!-- O jogador escolhe a dificuldade -->
         <select class="login-select">
             <option value="facil">Fácil (12 cartas)</option>
             <option value="medio">Médio (16 cartas)</option>

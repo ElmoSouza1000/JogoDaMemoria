@@ -2,8 +2,9 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;      /* min-height: a página pode crescer e nada é cortado no celular */
     justify-content: center;
+    padding: 20px;          /* espaço nas bordas para não colar na lateral */
 }
 
 .login-header{
@@ -36,7 +37,7 @@
     width: 100%;
 }
 
-/* NOVO: caixa de escolha da dificuldade, igual ao campo de nome */
+/* Caixa de escolha da dificuldade, igual ao campo de nome */
 .login-select{
     background-color: #fff;
     border: 2px solid #333;
@@ -65,4 +66,17 @@
     background-color: #eee;
     color: #aaa;
     cursor: auto;
+}
+
+/* ===== CELULARES PEQUENOS (até 400px de largura) ===== */
+@media (max-width: 400px){
+
+    .login-header{
+        margin-bottom: 30px;
+    }
+
+    /* título menor para caber na tela */
+    .login-header h1{
+        font-size: 1.1em;
+    }
 }

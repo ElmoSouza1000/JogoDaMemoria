@@ -28,11 +28,12 @@ const characters = [
     'zenitsu',
 ];
 
-// ===== NÍVEIS: quantos pares e quantas colunas cada um tem =====
+// ===== NÍVEIS: quantos pares cada um tem =====
+// (o número de colunas é definido no CSS, para funcionar também no celular)
 const levels = {
-    facil:   { name: 'Fácil',   pairs: 6,  columns: 4 },
-    medio:   { name: 'Médio',   pairs: 8,  columns: 4 },
-    dificil: { name: 'Difícil', pairs: 10, columns: 5 },
+    facil:   { name: 'Fácil',   pairs: 6 },
+    medio:   { name: 'Médio',   pairs: 8 },
+    dificil: { name: 'Difícil', pairs: 10 },
 };
 
 // ===== DADOS GUARDADOS NA TELA DE LOGIN =====
@@ -269,7 +270,8 @@ const createCard = (character) => {
     const front = createElement('div', 'face front');
     const back = createElement('div', 'face back');
 
-    front.style.backgroundImage = `url('../imagens/${character}.jfif')`;
+    // Caminho relativo à página game.html (que está dentro da pasta "pages")
+    front.style.backgroundImage = `url('../imagens/${character}.jpg')`;
 
     card.appendChild(front);
     card.appendChild(back);
@@ -306,8 +308,10 @@ const startGame = () => {
     modal.classList.add('escondido');
     showRecord();
 
-    // 4) Define as colunas do tabuleiro conforme o nível
-    grid.style.gridTemplateColumns = `repeat(${level.columns}, 1fr)`;
+    // 4) Coloca no tabuleiro a classe do nível ("facil", "medio" ou "dificil").
+    //    O CSS usa essa classe para decidir quantas colunas mostrar,
+    //    e muda sozinho se a tela for de celular.
+    grid.className = `grid ${levelKey}`;
 
     // 5) Sorteia os personagens, pega a quantidade do nível e duplica (formando os pares)
     const chosen = shuffle(characters).slice(0, level.pairs);
