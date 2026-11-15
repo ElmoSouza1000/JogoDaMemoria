@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonte do Google (CORRIGIDO: o link estava com espaços no meio) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/login.css">
+
+    <title>Jogo da Memória</title>
+</head>
+<body>
+
+    <form class="login-form">
+
+        <div class="login-header">
+            <img src="./imagens/chapeuDePalha.jpg" alt="Ícone do jogo">
+            <h1>Memory Game</h1>
+        </div>
+
+        <input type="text" placeholder="Nome" class="login-input">
+
+        <!-- NOVO: o jogador escolhe a dificuldade -->
+        <select class="login-select">
+            <option value="facil">Fácil (12 cartas)</option>
+            <option value="medio">Médio (16 cartas)</option>
+            <option value="dificil">Difícil (20 cartas)</option>
+        </select>
+
+        <button type="submit" class="login-button" disabled>Começar</button>
+    </form>
+
+    <script src="./js/login.js"></script>
+</body>
+</html>

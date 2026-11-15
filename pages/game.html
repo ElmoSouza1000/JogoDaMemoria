@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jogo da Memória</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/game.css">
+</head>
+<body>
+
+<main>
+    <!-- Painel com as informações da partida -->
+    <header>
+        <span>Jogador: <span class="player"></span></span>
+        <span>Tempo: <span class="timer">00:00</span></span>
+        <span>Jogadas: <span class="moves">0</span></span>
+        <span>Pares: <span class="pairs">0</span></span>
+        <span>Recorde: <span class="record">--:--</span></span>
+    </header>
+
+    <!-- Controles: trocar nível, reiniciar e sair -->
+    <div class="controls">
+        <select class="level-select">
+            <option value="facil">Fácil</option>
+            <option value="medio">Médio</option>
+            <option value="dificil">Difícil</option>
+        </select>
+        <button class="game-button restart-button">Reiniciar</button>
+        <button class="game-button exit-button">Sair</button>
+    </div>
+
+    <!-- Mensagem que muda durante o jogo -->
+    <p class="status">Clique em uma carta para começar!</p>
+
+    <!-- As cartas são criadas pelo JavaScript aqui dentro -->
+    <div class="grid"></div>
+
+    <!-- Tela de vitória (começa escondida) -->
+    <div class="modal escondido">
+        <div class="modal-box">
+            <h2>Parabéns!</h2>
+            <p class="modal-text"></p>
+            <h3>Ranking</h3>
+            <ul class="ranking-list"></ul>
+            <button class="game-button play-again-button">Jogar de novo</button>
+        </div>
+    </div>
+</main>
+
+<script src="../js/game.js"></script>
+</body>
+</html>
